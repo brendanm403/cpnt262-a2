@@ -1,12 +1,14 @@
 <script>
 	import '../../app.postcss';
-	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem, AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
 		{name: "Products", href: "/products"}
 	]
+
+	let currentTile = 0;
 </script>
 
 <slot />
@@ -35,21 +37,56 @@
 		</AppBar>
 
 	</svelte:fragment>
+	<h1 class="text-center text-5xl my-5">Main Page Heading</h1>
 	<svelte:fragment slot="sidebarLeft">
-		<Accordion class="mt-5">
-			<AccordionItem open>
-				<svelte:fragment slot="lead">(icon)</svelte:fragment>
-				<svelte:fragment slot="summary">(summary)</svelte:fragment>
-				<svelte:fragment slot="content">(content)</svelte:fragment>
-			</AccordionItem>
-			<AccordionItem>
-				<svelte:fragment slot="lead">(icon)</svelte:fragment>
-				<svelte:fragment slot="summary">(summary)</svelte:fragment>
-				<svelte:fragment slot="content">(content)</svelte:fragment>
-			</AccordionItem>
-			<!-- ... -->
-		</Accordion>
+		
+<AppRail>
+	<svelte:fragment slot="lead">
+		<AppRailAnchor href="/" >(icon)</AppRailAnchor>
 	</svelte:fragment>
+	<!-- --- -->
+	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">
+		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<span>Tile 1</span>
+	</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
+		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<span>Tile 2</span>
+	</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">
+		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<span>Tile 3</span>
+	</AppRailTile>
+	<!-- --- -->
+	<svelte:fragment slot="trail">
+		<AppRailAnchor href="/" target="_blank" title="Account">(icon)</AppRailAnchor>
+	</svelte:fragment>
+</AppRail>
+
+	</svelte:fragment>
+	<Accordion class="mt-56 w-2/3 justify-center mx-auto">
+		<AccordionItem open>
+			<svelte:fragment slot="lead">(icon)</svelte:fragment>
+			<svelte:fragment slot="summary"><h2>Placeholder Title 1</h2></svelte:fragment>
+			<svelte:fragment slot="content"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure delectus animi in expedita, amet voluptate tempora nobis eum optio dicta culpa, quas beatae nesciunt blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas repudiandae consequuntur quae incidunt cumque modi?</p></svelte:fragment>
+		</AccordionItem>
+		<AccordionItem>
+			<svelte:fragment slot="lead">(icon)</svelte:fragment>
+			<svelte:fragment slot="summary"><h2>Placeholder Title 2</h2></svelte:fragment>
+			<svelte:fragment slot="content"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit dolorum optio, maiores rem facilis, beatae porro quasi itaque architecto qui eligendi provident dicta, fugit perferendis!</p></svelte:fragment>
+		</AccordionItem>
+		<AccordionItem>
+			<svelte:fragment slot="lead">(icon)</svelte:fragment>
+			<svelte:fragment slot="summary"><h2>Placeholder Title 3</h2></svelte:fragment>
+			<svelte:fragment slot="content"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur reprehenderit quod, error perspiciatis, ipsum nemo tempore, adipisci est quibusdam corporis assumenda ut facilis quisquam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, sit?</p></svelte:fragment>
+		</AccordionItem>
+		<AccordionItem>
+			<svelte:fragment slot="lead">(icon)</svelte:fragment>
+			<svelte:fragment slot="summary"><h2>Placeholder Title 4</h2></svelte:fragment>
+			<svelte:fragment slot="content"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure delectus animi in expedita, amet voluptate tempora nobis eum optio dicta culpa, quas beatae nesciunt blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sed et ipsum consectetur iusto aspernatur perferendis, omnis odio adipisci non dolore dicta placeat. Labore voluptates sed repudiandae blanditiis quae pariatur?</p></svelte:fragment>
+		</AccordionItem>
+		<!-- ... -->
+	</Accordion>
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
