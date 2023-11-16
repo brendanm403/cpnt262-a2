@@ -64,7 +64,7 @@
 </AppRail>
 
 	</svelte:fragment>
-	<Accordion class="mt-16 w-1/2 mx-auto">
+	<Accordion class="mt-16 mx-auto" width="w-3/5">
 		<AccordionItem open>
 			<svelte:fragment slot="lead">(icon)</svelte:fragment>
 			<svelte:fragment slot="summary"><h2>Placeholder Title 1</h2></svelte:fragment>
