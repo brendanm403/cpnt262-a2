@@ -2,7 +2,7 @@
 	import '../../app.postcss';
 	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem, AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import Icon from '@iconify/svelte';
-	import {sectionData} from "$lib/home-data.js";
+	import {homeData} from "$lib/section-data.js";
 	import Section from "$lib/components/Section.svelte";
 	let navLinks = [
 		{name: "Home", href: "/"},
@@ -39,34 +39,32 @@
 		</AppBar>
 
 	</svelte:fragment>
-	<h1 class="text-center text-5xl my-5">Main Page Heading</h1>
+	<h1 class="text-center text-5xl mt-10">Main Page Heading</h1>
 	<svelte:fragment slot="sidebarLeft">
 		
 <AppRail>
-	<svelte:fragment slot="lead">
-		<AppRailAnchor href="/" >(icon)</AppRailAnchor>
-	</svelte:fragment>
 	<!-- --- -->
 	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<svelte:fragment slot="lead"><Icon class="mx-auto" icon="material-symbols:add-moderator" width="31" height="31" /></svelte:fragment>
 		<span>Tile 1</span>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<svelte:fragment slot="lead"><Icon class="mx-auto" icon="material-symbols:add-location-alt" width="31" height="31" /></svelte:fragment>
 		<span>Tile 2</span>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<svelte:fragment slot="lead"><Icon class="mx-auto" icon="material-symbols:add-task-rounded" width="31" height="31" /></svelte:fragment>
 		<span>Tile 3</span>
 	</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-4" value={3} title="tile-3">
+		<svelte:fragment slot="lead"><Icon class="mx-auto" icon="material-symbols:auto-transmission-sharp" width="31" height="31" /></svelte:fragment>
+		<span>Tile 4</span>
+	</AppRailTile>
 	<!-- --- -->
-	<svelte:fragment slot="trail">
-		<AppRailAnchor href="/" target="_blank" title="Account">(icon)</AppRailAnchor>
-	</svelte:fragment>
 </AppRail>
 
 	</svelte:fragment>
-	<Accordion class="mt-16 mx-auto" width="w-3/5">
+	<Accordion class="mt-16 mx-auto bg-surface-200-700-token rounded-container-token" width="w-3/5">
 		<AccordionItem open>
 			<svelte:fragment slot="lead"><Icon icon="material-symbols:add-moderator" width="31" height="31" /></svelte:fragment>
 			<svelte:fragment slot="summary"><h2 class="text-2xl">Section 1 Preview</h2></svelte:fragment>
@@ -89,7 +87,8 @@
 		</AccordionItem>
 		<!-- ... -->
 	</Accordion>
-	{#each sectionData as section}
+	<!-- loops through data and creates the sections -->
+	{#each homeData as section}
     <Section {...section}/>
   {/each} 
 	<!-- (sidebarRight) -->
@@ -97,6 +96,10 @@
 	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter">Page Footer</svelte:fragment>
+	<svelte:fragment slot="pageFooter">
+		<footer class="bg-surface-100-800-token p-5">
+			<p class="text-center">&copy; Brendan Malycky 2023</p>
+		</footer>
+	</svelte:fragment>
 	<!-- (footer) -->
 </AppShell>
