@@ -5,5 +5,5 @@
 
 <!-- loops through data and creates the sections -->
 {#each aboutData as section}
-<Section {...section} marginY="my-8"/>
+<Section {...section} marginY="my-20"/>
 {/each} 
