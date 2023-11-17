@@ -1,12 +1,15 @@
 <script>
 	import '../../app.postcss';
-	import { AppShell, AppBar, Avatar, LightSwitch } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, LightSwitch, ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+  import PageHeader from "$lib/components/PageHeader.svelte";
 
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
 		{name: "Products", href: "/products"}
 	]
+
+  let valueSingle = 'books';
 </script>
 
 <slot />
@@ -33,7 +36,18 @@
   </svelte:fragment>
 	<!-- (sidebarLeft) -->
 	<!-- (sidebarRight) -->
-	<svelte:fragment slot="pageHeader">Page Header</svelte:fragment>
+	<svelte:fragment slot="pageHeader">
+    <PageHeader />
+  </svelte:fragment>
+
+  <h2 class="text-2xl text-center mt-5">Filter Products</h2>
+
+  <ListBox class="w-1/5 mx-auto mt-5 bg-surface-200-700-token" rounded="rounded-container-token">
+    <ListBoxItem bind:group={valueSingle} name="medium" value="books">Category 1</ListBoxItem>
+    <ListBoxItem bind:group={valueSingle} name="medium" value="movies">Category 2</ListBoxItem>
+    <ListBoxItem bind:group={valueSingle} name="medium" value="tv">Category 3</ListBoxItem>
+  </ListBox>
+			
 	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
