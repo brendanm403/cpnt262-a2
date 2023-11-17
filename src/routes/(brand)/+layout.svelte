@@ -2,7 +2,8 @@
 	import '../../app.postcss';
 	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem, AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import Icon from '@iconify/svelte';
-
+	import {sectionData} from "$lib/home-data.js";
+	import Section from "$lib/components/Section.svelte";
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
@@ -88,16 +89,9 @@
 		</AccordionItem>
 		<!-- ... -->
 	</Accordion>
-	<article class="my-20 p-5 w-4/5 mx-auto">
-		<div class="flex gap-2 items-center">
-			<Icon icon="material-symbols:add-moderator" width="31" height="31" />
-			<h2 class="text-3xl">Section 1</h2>
-		</div>
-		<p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro et sequi vel debitis ratione optio aperiam maiores nobis, voluptas molestias rerum sed ex qui mollitia accusamus temporibus.</p>
-		<p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi magnam eveniet autem! Recusandae officia quisquam sed accusantium ab! Voluptatem earum, repellendus, porro eum recusandae totam sed eveniet natus ea perspiciatis doloremque eos dolorem, laboriosam fuga voluptatibus aliquid! Sunt blanditiis suscipit sapiente culpa id pariatur quidem, eligendi itaque aspernatur expedita facere veniam eaque nulla, optio aperiam in!</p>
-		<p class="my-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam earum impedit quod unde tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, blanditiis magnam dolorem quam accusantium tempore, saepe odio corporis expedita recusandae optio debitis illo deserunt beatae modi atque molestiae eligendi suscipit qui vel porro? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis alias voluptatum eius aliquam veniam et earum officia asperiores neque porro laudantium ut impedit, voluptatibus at provident odit minima quaerat, quia nobis? Voluptas, animi.</p>
-	</article>
-	
+	{#each sectionData as section}
+    <Section {...section}/>
+  {/each} 
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
