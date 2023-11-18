@@ -1,6 +1,6 @@
 # cpnt 262 Assignment 2: SkeletonUI Layouts
 - brendan malycky
-- [netlify deployment](https://singular-macaron-d42b1d.netlify.app/about)
+- [netlify deployment](https://singular-macaron-d42b1d.netlify.app/)
 ## Search Terms
 ### url object
 - how do I get access to the url object?
