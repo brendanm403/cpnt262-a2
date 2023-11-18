@@ -3,13 +3,16 @@
 	import { AppShell, AppBar, Avatar, LightSwitch, ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
   import PageHeader from "$lib/components/PageHeader.svelte";
   import PageFooter from "$lib/components/PageFooter.svelte";
+
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
 		{name: "Products", href: "/products"}
 	]
 
+  // needed for listbox skeleton component //
   let valueSingle = 'books';
+
 </script>
 
 <AppShell>
@@ -32,8 +35,7 @@
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>
-	<!-- (sidebarLeft) -->
-	<!-- (sidebarRight) -->
+
 	<svelte:fragment slot="pageHeader">
     <PageHeader />
   </svelte:fragment>
@@ -46,11 +48,9 @@
     <ListBoxItem bind:group={valueSingle} name="medium" value="tv">Category 3</ListBoxItem>
   </ListBox>
 			
-	<!-- Router Slot -->
 	<slot />
-	<!-- ---- / ---- -->
+	
 	<svelte:fragment slot="pageFooter">
     <PageFooter />
   </svelte:fragment>
-	<!-- (footer) -->
 </AppShell>
