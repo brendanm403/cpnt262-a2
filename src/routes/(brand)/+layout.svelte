@@ -2,7 +2,7 @@
 	import '../../app.postcss';
 	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem, AppRail, AppRailTile} from '@skeletonlabs/skeleton';
 	import Icon from '@iconify/svelte';
-
+	import PageFooter from "$lib/components/PageFooter.svelte";
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
@@ -89,9 +89,7 @@
 	<slot />
 	<!-- ---- / ---- -->
 	<svelte:fragment slot="pageFooter">
-		<footer class="bg-surface-100-800-token p-5">
-			<p class="text-center">&copy; Brendan Malycky 2023</p>
-		</footer>
+		<PageFooter />
 	</svelte:fragment>
 	<!-- (footer) -->
 </AppShell>

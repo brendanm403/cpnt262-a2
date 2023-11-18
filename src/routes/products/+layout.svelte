@@ -2,7 +2,7 @@
 	import '../../app.postcss';
 	import { AppShell, AppBar, Avatar, LightSwitch, ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
   import PageHeader from "$lib/components/PageHeader.svelte";
-
+  import PageFooter from "$lib/components/PageFooter.svelte";
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
@@ -11,8 +11,6 @@
 
   let valueSingle = 'books';
 </script>
-
-<slot />
 
 <AppShell>
 	<svelte:fragment slot="header">
@@ -51,6 +49,8 @@
 	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter">Page Footer</svelte:fragment>
+	<svelte:fragment slot="pageFooter">
+    <PageFooter />
+  </svelte:fragment>
 	<!-- (footer) -->
 </AppShell>
