@@ -3,6 +3,7 @@
 	import { AppShell, AppBar, Avatar, LightSwitch, Accordion, AccordionItem, AppRail, AppRailTile} from '@skeletonlabs/skeleton';
 	import Icon from '@iconify/svelte';
 	import PageFooter from "$lib/components/PageFooter.svelte";
+	import {browser} from "$app/environment";
 	let navLinks = [
 		{name: "Home", href: "/"},
 		{name: "About", href: "/about"},
@@ -12,6 +13,30 @@
 	let currentTile = 0;
 
 	let accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
+
+	const handleClick = function(event) {
+		let currentPage = event.target.href;
+		if (currentPage === "http://localhost:5173/about") {
+			accordianIcons = ["ph:battery-high-fill", "ph:broadcast-bold", "ph:chart-bar", "ph:circuitry-fill"]
+		} else {
+			accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
+		}
+	}
+
+	if (browser) {
+
+		const changeIcons = function() {
+			let currentPage = location.href;
+			if (currentPage === "http://localhost:5173/about") {
+				accordianIcons = ["ph:battery-high-fill", "ph:broadcast-bold", "ph:chart-bar", "ph:circuitry-fill"]	
+			} else {
+				accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
+			}
+		}
+
+		let bodyObj = document.getElementsByTagName("body")[0];
+		bodyObj.onload = changeIcons();
+	}
 </script>
 
 <AppShell>
@@ -23,10 +48,11 @@
 			<h2 class="text-2xl">Site Title</h2>
 			<svelte:fragment slot="trail">
 			
+			
 				<nav>
 					<ul class="flex">
 						{#each navLinks as {name, href}}
-							<li class="mx-5"><a class="p-2" {href}>{name}</a></li>
+							<li class="mx-5"><a class="p-2" {href} on:click={handleClick}>{name}</a></li>
 						{/each}
 					</ul>
 				</nav>
