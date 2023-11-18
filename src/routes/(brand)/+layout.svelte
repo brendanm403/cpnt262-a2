@@ -15,8 +15,9 @@
 	let accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
 
 	const handleClick = function(event) {
-		let currentPage = event.target.href;
-		if (currentPage === "http://localhost:5173/about") {
+		let currentPage = event.target.innerHTML;
+		console.log(currentPage);
+		if (currentPage === "About") {
 			accordianIcons = ["ph:battery-high-fill", "ph:broadcast-bold", "ph:chart-bar", "ph:circuitry-fill"]
 		} else {
 			accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
@@ -26,8 +27,9 @@
 	if (browser) {
 
 		const changeIcons = function() {
-			let currentPage = location.href;
-			if (currentPage === "http://localhost:5173/about") {
+			let currentPage = location.pathname;
+			console.log(currentPage);
+			if (currentPage === "/about") {
 				accordianIcons = ["ph:battery-high-fill", "ph:broadcast-bold", "ph:chart-bar", "ph:circuitry-fill"]	
 			} else {
 				accordianIcons = ["material-symbols:add-moderator", "material-symbols:add-location-alt", "material-symbols:add-task-rounded", "material-symbols:auto-transmission-sharp"];
